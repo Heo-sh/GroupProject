@@ -1,0 +1,179 @@
+@charset "UTF-8";
+
+* {
+/* 	box-sizing: border-box; */
+}
+
+/* header css */
+header{
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	height: 160px;
+	}
+
+.logo{
+	display: inline-block;
+	position: relative;
+	top: 10px;
+	border: none; 
+	margin-right: 150px;
+	cursor: pointer;
+}
+	
+
+.common{
+	width: 110px;
+	height: 100px;
+	background: #efeeee;
+	padding-top: 10px;
+	display: inline-block;
+	margin-right: 150px;
+	position: relative;
+	top: 20px;
+	border-radius: 35%; 
+	border: #fff; 
+	box-shadow: -10px -10px 20px rgba(250,251,255,0.7), 6px 6px 16px rgba(209,205,199,1.7); 
+	border: none; 
+	outline: none; 
+	cursor: pointer; 
+	overflow: hidden;
+}
+		
+.abm{
+	margin-right: 0px;}
+
+.common img{
+	display: block; 
+	margin: 0 auto; 
+	transition: all 0.5s;
+	}
+	
+.common .hov_txt{
+	display: none; 
+	font-size: 25px; 
+	transition: all 0.5s; 
+	width: 100%; 
+	height: 100%; 
+	background: rgba(134,134,134,0.5); 
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	transition: all 0.5s; 
+	justify-content: center; 
+	align-items: center; 
+	backdrop-filter: blur(2px);
+	}
+
+.common .hov_txt p{
+	color: #fff;
+	}
+	
+.common:hover .hov_txt{
+	display: flex;
+}
+/* 브렌드 버튼 */
+.brand_btn {
+	border: none;
+	width: 150px;
+	height: 150px;
+	border-radius: 100%;
+	margin: 0px 20px 0px 20px;
+}
+/* 게시판 css */
+.board_mainbox {
+	width: 90%;
+	height: auto;
+	background-color: #fff;
+	margin: 3% 5% 0% 5%;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+}
+
+.brand_btn_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;	
+}
+
+.send_btn {
+	width: 80px;
+	height: 30px;
+	margin: 5px 5px 5px 0;
+	background-color: gray;
+	border-style: none;
+	border-radius: 6px;
+	transition: 0.5s;
+	justify-self: right;
+}
+
+.send_btn:hover {
+	cursor: pointer;
+	background-color: black;
+	color: #fff;
+}
+
+.board_box {
+	width: 90%;
+	height: 800px;
+	margin: 5px 5% 5% 5%;
+	background-color: #d2eff0;
+	border-radius: 6px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	overflow: auto;
+}
+
+.board {
+	background-color: #fff;
+	border-radius: 6px;
+	width: 250px;
+	height: 370px;
+	margin: 3% 3% 3% 3%;
+	display: inline-block;
+	display: flex;
+	flex-direction: column;
+	border: 1px solid gray;
+}
+.board:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+p {
+	font-size: large;
+	margin-left: 14px;
+	font-weight: bold;
+}
+.img {
+	border-radius: 6px;
+	width: 220px;
+	height: 250px;
+	margin: 0px 10px 0px 14px;
+}
+.img img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	object-fit: fill;
+	border: 1px solid gray;
+}
+.like_main_box {
+	margin: 12px;
+}
+.fa-heart {
+	width: 30px;
+	height: 30px;
+	color: red;
+}
+.like_b_box {
+	border-style: none;
+	width: 20px;
+	height: 20px;
+	font-size: large;
+	background-color: #fff;
+}
+.like_b_box:focus {
+	outline: none;
+}
+</

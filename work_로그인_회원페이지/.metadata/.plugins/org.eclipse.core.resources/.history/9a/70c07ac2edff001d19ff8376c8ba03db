@@ -1,0 +1,43 @@
+package dao;
+
+import org.apache.ibatis.session.SqlSession;
+
+import vo.ProMemberVO;
+
+public class ProMemberDAO {
+	
+	SqlSession sqlSession;
+	
+	public ProMemberDAO(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+	}
+	
+	// 로그인 검증
+	public ProMemberVO loginCheck(String id) {
+		
+		ProMemberVO vo = sqlSession.selectOne("p.loginCheck", id);
+		return vo;
+	}
+	
+	// 아이디 중복체크
+	public int check_id(String id) {
+		
+		int res = sqlSession.selectOne("p.check_id", id);
+		return res;
+	}
+	
+	// 별명 중복체크
+	public int check_id(String id) {
+		
+		int res = sqlSession.selectOne("p.check_id", id);
+		return res;
+	}
+	
+	// 회원추가
+	public int insert(ProMemberVO vo) {
+		
+		int res = sqlSession.insert("p.member_insert",vo);
+		return res;
+	}
+
+}

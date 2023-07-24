@@ -1,0 +1,5 @@
+각 css마다
+.logo img{
+   max-width: 150px; 
+   display: inline-block;
+   margin-top: 10px;}

@@ -1,0 +1,122 @@
+2조 이진솔님, 임효인님, 정태하님, 송나윤님, 허성혁
+   - ☆인생네컷(관련 위치, 행사, 배경 이미지 등을 취합 검색) 
+	- 브랜드별 가격 및 프레임, 회원관리, 게시판 이용 후기 작성
+	- @@지점 @@어떤 사진을 찍었다. (
+	- 포토이즘 테이블 (가격, 프레임)
+	- @@ 테이블
+	- 디자인을 인스타처럼
+	- 4표
+   - 실종아동 찾기
+	- 실종등록, 신고 게시판, 회원관리
+	- 3표
+   - 실시간 교통
+	- 위치 관련
+	- 배차 간격
+	- 로그인 -> 경로 등록
+   - 노점상 위치
+	- 위치 관련
+	- 메뉴별로 
+	- 로그인 -> 배달관련, 좋아요, 사장관련 공지 게시판
+	- 3표
+   - 오픈런
+	- 온라인 대기표 시스템
+	- 브랜드 별 상품정보
+	- 로그인 대기표
+	- 낙찰 취소
+	- 후기
+	- 백화점 위치
+
+- 컬럼명
+프론트엔드 (디자인) - 2 || 이진솔님, 허성혁
+백엔드 (기능구현 및 테이블 구현) - 3 || 송나윤님, 정태하님, 임효인님
+
+spring
+autowired
+수동
+자동
+
+
+1. 사진 sns
+- 테이블
+  - 위치 (만약 시간이 되면 구현)
+  - 회원관리 -> 이벤트
+  - 게시판 -> 사진, 후기
+  - 브랜드 별 가격 비교, 프레임 비교
+
+-- 회원관리용
+
+create sequence seq_member_idx; -- 회원관리를 위한 시퀀스
+
+create table member(
+	idx number(20) primarykey, -- 관리번호
+	id varchar2(100), -- 아이디
+	pw varchar2(100), -- 비밀번호
+	nickname varchar2(100) uniquekey, -- 별칭
+	name varchar2(100), -- 이름
+	email varchar2(300), -- 이메일
+	address varchar2(500), -- 주소
+	phone varchar2(100), -- 핸드폰
+	photo varchar2(300), -- 사진
+	photo_name varchar2(500) -- 사진 실제 이름
+);
+
+--게시판(후기) 테이블
+CREATE SEQUENCE SEQ_BOARD_IDX
+create table board(
+	IDX NUMBER(3) PRIMARY KEY, --게시판 일련번호
+	NAME VARCHAR2(100) NOT NULL, --작성자
+	SUBJECT VARCHAR2(255) NOT NULL, --게시글 제목
+	CONTENT CLOB, --CONTENT: 내용 CLOB: VARCHAR2보다 큰 용량의 값을 넣어야 할 때
+	PWD VARCHAR2(100), --비밀번호
+	IP VARCHAR2(100), --IP
+	TITLE VARCHAR2(100),
+	FILENAME VARCHAR2(100), --사진
+	REGDATE DATE, --작성일자
+	READHIT NUMBER(3) DEFAULT 0, --조회수 DEFAULT 0: 생성 시 기본 값 = 0
+	REF NUMBER(3), --기준글 번호(댓글을 달기 위한 메인글)
+	STEP NUMBER(3), --댓글 순서(수직적)
+	DEPTH NUMBER(3), --댓글 깊이(대댓글)
+	DEL_INFO NUMBER(3), --삭제
+	LIKE NUMBER(50), -- 좋아요
+);
+
+-- 브랜드별 테이블
+CREATE SEQUENCE idx;
+create table haru (
+	haru_idx number(20), -- 하루 관리 번호
+	frame varchar2(50), -- 프레임
+	frame_name varchar2(100), -- 프레임 실제 이름
+);
+
+-1. 메인 화면(처음 떳을 때)
+	- 사이드바 (마이페이지, 위치 등)
+2. style sns처럼 사진 올릴 수 있게
+3. 마이페이지
+4. 사진관 위치 나오는 화면 -> 이동할 수 있게끔 사이드 바에 공간을 차지할 필요는 없을 것 같다.
+5. 눌렀을 때 나오는 상세 정보 (상세주소, 이벤트 프레임 유무)
+6. 로그인 화면
+
+- 메인 페이지
+- 로그인 페이지
+- 회원가입 페이지
+- 게시판 페이지
+- 위치 페이지
+- 프레임 페이지 (가격)
+- 내 정보 페이지
+
+기능구현
+1. 비밀번호, 아이디 찾기
+2. 포토테이블을 하나 만들어서 개인이 2, 3개 이상의 포토를 저장할 수 있게끔 하자.
+3. 유저랑 조인을 해서 그 안에 사진을 가져올 수 있게끔!
+
+
+
+
+
+
+
+
+
+
+
+

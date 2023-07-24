@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="m">
+	
+	<!-- 로그인 검증 -->
+	<select id="loginCheck" resultType="member" parameterType="String">
+		select * from pro_member where email=#{email}
+	</select>
+
+	<select id="check_nickname" resultType="int" parameterType="String">
+		select count(*) from pro_member where nickname=#{nickname}
+	</select>
+	
+	<insert id="member_insert" parameterType="member">
+		insert into pro_member values(
+				seq_pro_member_idx.nextVal,
+				#{email},
+				#{pw},
+				#{name},
+				#{nickname},
+				#{address},
+				#{phone}
+		)
+	</insert>
+
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+

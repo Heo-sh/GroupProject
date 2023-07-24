@@ -1,0 +1,169 @@
+package com.pj.photo;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import dao.ProMemberDAO;
+import dao.ProPhotoDAO;
+import path.MyCommon;
+import vo.ProMemberVO;
+
+@Controller
+public class MemberController {
+	
+	@Autowired
+	HttpSession session;
+	
+	ProMemberDAO proMember_dao;
+	
+	ProPhotoDAO proPhoto_dao;
+	
+	public MemberController(ProMemberDAO proMember_dao, ProPhotoDAO proPhoto_dao) {
+		this.proMember_dao = proMember_dao;
+		this.proPhoto_dao = proPhoto_dao;
+	}
+	
+	// 메인페이지
+	@RequestMapping(value= {"/","main"})
+	public String mainpage() {
+		
+		return MyCommon.PATH + "main.jsp";
+	}
+	
+	@RequestMapping("disney")
+	public String disney() {
+		
+		return MyCommon.PATH + "disney.jsp";
+	}
+	
+	@RequestMapping("faq")
+	public String faq() {
+		
+		return MyCommon.PATH + "faq.jsp";
+	}
+	
+	// 로그인&회원가입 페이지
+	@RequestMapping("login_join")
+	public String login_join() {
+		
+		// 로그인 했을 때 로그인&회원가입 페이지로 이동 불가
+		if (session.getAttribute("email") != null) {
+			
+			return MyCommon.PATH + "mypage.jsp";
+		}
+		
+		return MyCommon.PATH + "login_join.jsp";
+
+	}
+	
+	// 마이페이지
+	@RequestMapping("mypage")
+	public String mypage() {
+		
+		// 로그인 하지 않았을 때 마이 페이지로 이동 불가 
+		if (session.getAttribute("email") == null) {
+			
+			return MyCommon.PATH + "login_join.jsp";
+		}
+		
+		return MyCommon.PATH + "mypage.jsp";
+	}
+ 
+	// 별명 중복 처리
+	// 중복이 안되면 yes, 중복이 되면 no라는 문자열 보내기
+	@PostMapping("check_nickname")
+	@ResponseBody
+	public String check_nickname(String nickname) {
+		
+		int res = proMember_dao.check_nickname(nickname);
+		
+		if (res > 0) {
+			
+			return "[{'result':'no'}]";
+			
+		}
+		
+		return "[{'result':'yes'}]";
+	}
+	
+//	@RequestMapping("check_email")
+//	@ResponseBody
+//	// 중복이 안되면 yes, 중복이 되면 no라는 문자열 보내기
+//	public String check_email(String email) {
+//		
+//		int res = proMember_dao.check_email(email);
+//		
+//		if (res > 0) {
+//			
+//			return "[{'result':'no'}]";
+//			
+//		}
+//		
+//		return "[{'result':'yes'}]";
+//	}
+				
+	// 회원가입
+	@PostMapping("member_insert")
+	public String member_insert(ProMemberVO vo) {
+		
+		int res = proMember_dao.insert(vo);
+		
+		if (res > 0) {
+			
+			return "redirect:login_join";
+		}
+		
+		return null;
+	}
+	
+	// 로그인
+	@PostMapping("login.do")
+	@ResponseBody
+	public String login(String email, String pw) {
+		
+		// 여러 개의 로그인 페이지가 열려 있을 때
+		if (session.getAttribute("email") != null) {
+			
+			return "[{'result':'session_conn'}]";
+		}
+		
+		ProMemberVO vo = proMember_dao.loginCheck(email);
+		
+		// 아이디가 존재하지 않는 경우
+		if(vo == null) {
+			
+			return "[{'result':'no_email'}]";
+		}
+		
+		// 비밀번호가 일치하지 않는 경우
+		if(!vo.getPw().equals(pw)) {
+			
+			return "[{'result':'no_pw'}]";
+		}
+		
+		// 세션 유지
+		session.setAttribute("email", vo);
+		
+		return "[{'result':'clear'}]";
+	}
+	
+	// 로그아웃
+	@RequestMapping("logout.do")
+	public String logout() {
+		
+		// 세션 제거
+		session.removeAttribute("email");
+		
+		// 세션에 들어있는 모든 속성을 제거한다
+		// session.invalidate();
+		
+		return "redirect:main";
+	}
+	
+}

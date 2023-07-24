@@ -1,0 +1,58 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>main</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
+	</head>
+	<body>
+		<div class = "logo">
+			<img src="resources/img/logo.png" onclick="location.href='main'">
+		</div>
+		<div class ="log">
+		 <c:choose>
+			<c:when test="${empty email}">
+           		<div class="login"><a href="login_join">Login</a></div>
+    		</c:when>
+			<c:when test="${not empty email}"> <!-- email이 비어있지 않을 때(로그아웃만 보이기) -->
+				<div class="logout"><a href="logout.do">Logout</a></div>
+				<div class="mypage"><a href="mypage">Mypage</a></div>
+			</c:when>
+		</c:choose>
+		</div>
+		<div class="inline-blocked login_btn_item">
+			<div class="line" style="; "></div>
+		</div>
+		<nav>
+	        <ul>
+	            <li class="dropdown">
+	                <div class="dropdown-menu">브랜드소개</div>
+	                <div class="dropdown-content">
+	                </div>
+	            </li>
+	            <li class="dropdown">
+	                <div class="dropdown-menu">프레임갤러리</div>
+	                <div class="dropdown-content">
+	                    <a href="#">new</a>
+	                    <a href="disney">디즈니</a>
+	                    <a href="#">잔망루피</a>
+	                    <a href="#">도구리</a>
+	                </div>
+	            </li>
+	            <li class="dropdown">
+	                <div class="dropdown-menu">매장안내</div>
+	            </li>
+	            <li class="dropdown">
+	                <div class="dropdown-menu">고객지원</div>
+	                <div class="dropdown-content">
+	                    <a href="faq">FAQ</a>
+	                    <a href="#">Q&A</a>
+	                </div>
+	            </li>
+	        </ul>
+    	</nav>
+	</body>
+</html>

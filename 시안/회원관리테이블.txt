@@ -1,0 +1,80 @@
+-- 회원테이블
+-- 비회원테이블
+-- 사진테이블
+
+create table pro_member( -- 회원
+	member_idx number(3) primary key, -- 관리번호
+	pw varchar2(100) not null, -- 비밀번호
+	nickname varchar2(100) unique not null, -- 별칭(중복체크)
+	name varchar2(100) not null, -- 이름
+	email varchar2(300) UNIQUE NOT NULL, -- 이메일
+	address varchar2(500), -- 주소
+	phone varchar2(100) -- 핸드폰
+);
+
+
+create table pro_photo( -- 사진
+	member_idx number(3), -- 회원번호
+	photo_name varchar2(500) primary key, -- 사진 이름
+	CONSTRAINT member_idx_FK foreign key(member_idx) references pro_member(member_idx),
+);
+
+
+create sequence seq_pro_member_idx;
+
+create sequence seq_pro_non_member_idx;
+
+INSERT INTO PRO_MEMBER VALUES(
+	seq_pro_member_idx.nextVal,
+	'test',
+	'1111',
+	'test_nick',
+	'스프링',
+	'spring@a.com',
+	'인천시 부평구',
+	'010-2222-2222'
+);
+
+ALTER SEQUENCE TEST_PM.SEQ_PRO_MEMBER_IDX INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999999999999 NOCYCLE NOCACHE NOORDER ;
+
+
+INSERT INTO PRO_NON_MEMBER VALUES(
+	seq_pro_non_member_idx.nextVal,
+	'010-1111-1111',
+	'홍길동'
+);
+
+ALTER SEQUENCE TEST_PM.SEQ_PRO_NON_MEMBER_IDX INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999999999999 NOCYCLE NOCACHE NOORDER ;
+
+
+--댓글을 위한 테이블
+CREATE TABLE B_COMMENT(
+	IDX NUMBER(5) PRIMARY KEY, --댓글 번호, 순번이 낮을 수록 최신댓글
+	ANSWERNUM NUMBER(10) DEFAULT 0,	--해당 댓글의 자식댓글
+	CONTENT CLOB,	--댓글 내용
+	REGDATE DATE,	--작성 일자
+	PARENTNUM NUMBER(10) DEFAULT 0,	--부모댓글의 ID값
+	REF NUMBER(10) DEFAULT 1,		--부모댓글과 자식댓글의 묶음
+	REFORDER NUMBER(10) DEFAULT 0,	--댓글 그룹들의 순서
+	STEP NUMBER(10) DEFAULT 0,		--댓글의 계층
+	LIKE_B NUMBER(10) DEFAULT 0,	--좋아요 기능
+	BOARD_ID NUMBER(10), 			--게시글의 ID
+	MEMBER_IDX NUMBER(3),			--댓글을 작성한 이의 IDX
+	FOREIGN KEY (BOARD_ID) REFERENCES P_BOARD(BOARD_ID),
+	FOREIGN KEY (MEMBER_IDX) REFERENCES PRO_MEMBER(MEMBER_IDX)
+);
+
+--게시글을 위한 테이블
+CREATE TABLE P_BOARD(
+	BOARD_ID NUMBER(10) PRIMARY KEY, --게시글 관리 번호 
+	CONTENT CLOB, --게시글 내용 
+	REGDATE DATE, --게시글 날짜
+	LIKE_B NUMBER(10) DEFAULT 0, --좋아요 버튼 
+	NICKNAME VARCHAR2(100) NOT NULL,
+	IP VARCHAR2(100),
+	FOREIGN KEY (NICKNAME) REFERENCES PRO_MEMBER (NICKNAME) 
+);
+
+create sequence seq_board_id;
+
+create sequence seq_idx;

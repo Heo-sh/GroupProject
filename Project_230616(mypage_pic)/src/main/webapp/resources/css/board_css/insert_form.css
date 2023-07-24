@@ -1,0 +1,245 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	/* background-color: rgb(173, 173, 183); */
+	height: auto;
+}
+
+.menu_box {
+	width: 100%;
+	height: 180px;
+	background-color: white;
+	border-radius: 6px;
+}
+
+.menu_box ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	text-align: center;
+}
+
+.menu_box ul li {
+	background-color: gray;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	list-style: none;
+	position: relative;
+	transition: 0.5s;
+	display: block;
+	margin: 0 30px 0 30px;
+}
+
+.menu_box ul li:hover {
+	background-color: black;
+	box-shadow: 0px 20px 100px 0px rgba(0, 0, 0, 0.5);
+}
+
+.menu_box ul li ul li {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	margin: 0;
+	margin-bottom: 10px;
+	right: 25px;
+	top: 70px;
+}
+
+.menu_box ul li a {
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+}
+
+.menu_box ul li ul {
+	visibility: hidden;
+	display: none;
+	height: 400px;
+}
+
+.menu_box ul li:hover ul {
+	visibility: visible;
+	display: block;
+}
+
+.menu_box ul .logo_box {
+	width: 100px;
+	height: 100px;
+}
+
+.menu_box ul .login_btn {
+	border-radius: 0%;
+	width: 30px;
+	height: 30px;
+	align-self: flex-start;
+	margin: 0;
+	border-radius: 5px;
+}
+
+.menu_box ul .login_btn ul li {
+	right: 110px;
+	top: 0;
+	border-radius: 6px;
+	width: 100px;
+	height: 30px;
+	margin: 0;
+}
+
+/* 게시판 css */
+.board_mainbox {
+	width: auto;
+	height: auto;
+	background-color: #fff;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+}
+
+.board_mainbox h1 {
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 0px;
+	padding-top: 30px;
+}
+
+.insert_form {
+	background-color: #fff;
+	border-radius: 6px;
+	width: 50%;
+	height: auto;
+	display: inline-block;
+	display: flex;
+	flex-direction: column;
+	margin: 0 25%;
+	box-shadow: 5px 5px 5px rgb(91, 81, 81);
+}
+
+#nickname {
+	border-style: none;
+	margin: 10px;
+	font-size: large;
+}
+
+.img_box {
+	width: 90%;
+	height: 600px;
+	background-color: rgb(202, 199, 199);
+	margin: 0 25px;
+	border-radius: 6px;
+}
+
+.img_box img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	object-fit: fill;
+}
+
+.upload_box {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+/* input[type=file] css */
+/* label css 추가 */
+.upload_box label {
+	display: inline-block;
+	padding: .5em .75em;
+	margin: 5px 25px 5px 5px;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	transition: all 0.5s;
+}
+
+.upload_box label:hover {
+	background-color: rgb(133, 112, 112);
+	color: #704444;
+}
+/* input 버튼 숨기기 */
+.upload_box input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+/* 파일의 이름 나오게 하기 위함 */
+.upload_box .upload_name {
+	display: inline-block;
+	padding: .5em .75em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	appearance: none; /* 네이티브 외형 감추기 */
+}
+
+.brand_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.brand_box button {
+	border-style: none;
+	border-radius: 6px;
+	width: 100px;
+	height: 50px;
+	margin: 0px 10px 10px 10px;
+	border-color: #ebebeb;
+	transition: all 0.5s;
+}
+
+.brand_box button:hover {
+	background-color: pink;
+	cursor: pointer;
+}
+
+#content {
+	border-radius: 6px;
+	width: 90%;
+	height: 200px;
+	margin: 0 25px 5px 25px;
+	font-size: 25px;
+	resize: none;
+	border-color: #999;
+}
+
+#content:focus {
+	outline: none;
+}
+
+.btn_box {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+#uploadbtn {
+	margin: 0px 5px 5px 5px;
+}
+
+.cancle_btn {
+	margin: 0px 25px 5px 0px;
+}

@@ -1,0 +1,13 @@
+package vo;
+
+public class ProNonMemberVO {
+	
+	private int non_member_idx;
+	private String non_member_phone;
+	private String non_member_name;
+	
+	non_member_idx number(3) primary key, -- 주문번호
+	non_member_phone varchar2(100) unique not null, -- 핸드폰
+	non_member_name varchar2(100)
+
+}

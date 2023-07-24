@@ -1,0 +1,167 @@
+변경 시 이름 바꿔서 올려주세요!
+
+생성 순서: 회원(pro_member) -> 게시글(p_board) -> 댓글(b_comment) -> 브랜드(brand_name) -> 사진(pro_photo) 
+
+<추가사항>
+1. view table 생성함.
+2. 기존의 사진 테이블 변경
+3. b_comment 테이블에 'ip' column 추가함.
+4. b_comment 테이블에 member_idx를 삭제하고 memeber_nickname을 추가함
+5. 별명을 변경하거나 삭제했을시 어떻게 할것인가에 대한 문제
+   - 각 테이블에 foreign key로 연결되어 있던 nickname -> member_idx로 변경
+6. 대댓글 관리를 위한 sequence 2개 추가함.
+7. 회원삭제에 대한 문제점
+   - 각 테이블에 foreign key로 연결되어 있던 member_idx에
+     ON DELETE CASCADE(참조테이블의 튜플이 삭제되면 기본 테이블의 관련 튜플도 모두 삭제) 옵션을 주어 해결
+8. b_comment의 board_id에도 on delete cascade를 추가하였음
+
+FOREIGN KEY ~ REFERENCES
+ON DELETE 옵션
+ON UPDATE 옵션
+<옵션>
+NO ACTION: 참조 테이블에 변화가 있어도 기본 테이블에는 아무런 조취를 취하지 않음
+CASCADE: 참조테이블의 튜플이 삭제되면 기본 테이블의 관련 튜플도 모두 삭제되고, 속성이 변경되면 관련 튜플의 속성 값도 모두 변경
+SET NULL : 참조테이블에 변화가 있으면 기본 테이블의 관련 튜플의 속성 값을 NULL로 변경한다
+SET DEFAULT: 참조 테이블에 변화가 있으면 기본 테이블의 관련 튜플의 속성값을 기본값으로 변경
+
+---------------------------------------------------------------------------------------------------------
+
+
+-- 1
+-- 회원테이블
+create table pro_member(
+	member_idx number(3) primary key, 		--1.관리번호
+	email varchar2(300) UNIQUE NOT NULL, 	--2.이메일
+	pw varchar2(100) not null, 				--3.비밀번호
+	name varchar2(100) not null, 			--4.이름
+	nickname varchar2(100) not null, 		--5.별칭(중복체크)
+	address_postcode varchar2(5), 			--6.우편번호
+	address varchar2(500), 					--7.주소
+	address_detail varchar2(500), 			--8.상세주소
+	phone varchar2(100) 					--9.핸드폰
+);
+
+--회원 관리를 위한 시퀀스
+create sequence seq_pro_member_idx;
+
+--회원 샘플 데이터
+INSERT INTO PRO_MEMBER VALUES(
+	seq_pro_member_idx.nextVal, --관리번호
+	'spring@a.com', 			--이메일
+	'1111', 					--비밀번호
+	'스프링', 					--이름
+	'test_nick', 				--별칭
+	'11111', 					--우편번호
+	'인천시 부평구', 				--주소
+	'부평동', 					--상세주소
+	'010-1111-1111' 			--핸드폰번호
+);
+
+-- 멤버 데이터 추가 후 입력
+ALTER SEQUENCE TEST_PM.SEQ_PRO_MEMBER_IDX INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999999999999 NOCYCLE NOCACHE NOORDER ;
+ALTER SEQUENCE TEST_PM.SEQ_PRO_MEMBER_IDX INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999999999999 NOCYCLE NOCACHE ORDER ;
+
+
+-- 2
+-- 게시글을 위한 테이블
+CREATE TABLE P_BOARD(
+	BOARD_ID NUMBER(10) PRIMARY KEY, --1.게시글 관리 번호 
+	CONTENT CLOB, 			 --2.게시글 내용 
+	REGDATE DATE, 			 --3.게시글 날짜
+	LIKE_B NUMBER(10) DEFAULT 0, 	 --4.좋아요 버튼 
+	member_idx number(3), 		 --5.작성자의 idx
+	IP VARCHAR2(100),		 --6.작성자의 ip
+	FOREIGN KEY (member_idx) REFERENCES PRO_MEMBER (member_idx)
+		ON DELETE CASCADE
+);
+
+--게시글 관리를 위한 시퀀스
+create sequence seq_board_id;
+
+
+-- 3
+-- 댓글을 위한 테이블
+CREATE TABLE B_COMMENT(
+	IDX NUMBER(5) PRIMARY KEY, 	    --1.댓글 번호, 순번이 낮을 수록 최신댓글
+	ANSWERNUM NUMBER(10) DEFAULT 0,	--2.해당 댓글의 자식댓글
+	CONTENT CLOB,					--3.댓글 내용
+	REGDATE DATE,					--4.작성 일자
+	PARENTNUM NUMBER(10) DEFAULT 0,	--5.부모댓글의 ID값
+	REF NUMBER(10) DEFAULT 1,		--6.부모댓글과 자식댓글의 묶음
+	REFORDER NUMBER(10) DEFAULT 0,	--7.댓글 그룹들의 순서
+	STEP NUMBER(10) DEFAULT 0,		--8.댓글의 계층
+	LIKE_B NUMBER(10) DEFAULT 0,	--9.좋아요 기능
+	BOARD_ID NUMBER(10), 			--10.게시글의 ID
+	member_idx number(3),			--11.댓글을 작성한 이의 idx
+	ip varchar2(50) not null,
+	FOREIGN KEY (BOARD_ID) REFERENCES P_BOARD(BOARD_ID)
+			ON DELETE CASCADE,
+	FOREIGN KEY (member_idx) REFERENCES PRO_MEMBER(member_idx)
+			ON DELETE CASCADE
+);
+
+-- 댓글 관리를 위한 시퀀스
+create sequence seq_idx;
+
+-- 대댓글 관리를 위한 추가 시퀀스
+CREATE SEQUENCE seq_ref;
+CREATE SEQUENCE seq_reforder;
+
+
+-- 4
+-- 브랜드 테이블
+create table brand_name(
+	brand_num number(3) primary key, --1.브랜드 관리를 위한 번호
+	brand_name varchar2(100)	 	 --2.브랜드 이름
+);
+
+insert into brand_name values(
+	10,
+	'인생네컷'
+);
+
+insert into brand_name values(
+	20,
+	'포토이즘'
+);
+
+insert into brand_name values(
+	30,
+	'포토그레이'
+);
+
+insert into brand_name values(
+	40,
+	'하루필름'
+);
+
+insert into brand_name values(
+	50,
+	'포토매틱'
+);
+
+
+-- 5
+-- 사진 저장 테이블
+create table pro_photo(
+	photo_num number(5) primary key,	--1.사진 관리를 위한 시퀀스
+	photo_name varchar2(500), 	 		--2.사진 이름
+	member_idx number(3),		 		--3.작성자의 관리번호
+	regdate date,			 			--4.사진을 저장한 날짜
+	brand_num number(3),		 		--5.사진의 브랜드
+	board_id number(10),		 		--6.seq_board_id.currval을 담을 컬럼
+	foreign key (brand_num) references brand_name(brand_num),
+	foreign key (board_id) references p_board(board_id),
+	foreign key (member_idx) references pro_member(member_idx)
+		ON DELETE CASCADE
+);
+
+-- 사진 관리를 위한 시퀀스
+create sequence seq_photo_num;
+
+-- 사진을 불러오기 위한 VIEW TABLE
+CREATE VIEW BOARD_PHOTO AS (
+	SELECT B.*, P.BRAND_NUM, P.PHOTO_NAME, P.PHOTO_NUM, P.REGDATE PHOTO_REGI
+	FROM P_BOARD B, PRO_PHOTO P
+	WHERE B.BOARD_ID = P.BOARD_ID
+);

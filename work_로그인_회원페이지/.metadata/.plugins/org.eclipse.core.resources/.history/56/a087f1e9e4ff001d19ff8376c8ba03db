@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>login</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
+	</head>
+	<body>
+		<header>
+			<div class="logo" >
+			<img src="resources/img/logo.png" onclick="location.href='main'">
+			</div>
+		</header>
+		<table border="1" align="center">
+			<tr>
+				<th>아이디</th>
+				<td><input name="id" placeholder="아이디"></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td><input name="pw" type="password" placeholder="비밀번호"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				<input type="button" value="로그인" onclick="login(this.form)" style="cursor:pointer;">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				<input type="button" id="popup">
+				<label for="popup">비회원 예약 조회</label>
+				<div>
+					<div>
+						<label for="popup"></label>
+					</div>
+					<label for="popup"></label>
+				</div>				
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+				<input type="button" value="회원가입" onclick="location.href='memberjoin'" style="cursor:pointer;">
+				</td>
+			</tr>
+		</table>	
+	</body>
+</html>

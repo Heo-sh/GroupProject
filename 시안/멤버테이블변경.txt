@@ -1,0 +1,39 @@
+-- 회원테이블
+
+create table pro_member( -- 회원
+	member_idx number(3) primary key, -- 관리번호
+	email varchar2(300) UNIQUE NOT NULL, -- 이메일
+	pw varchar2(100) not null, -- 비밀번호
+	name varchar2(100) not null, -- 이름
+	nickname varchar2(100) unique not null, -- 별칭(중복체크)
+	address_postcode number(5), -- 우편번호
+	address varchar2(500), -- 주소
+	address_detail varchar2(500), -- 상세주소
+	phone varchar2(100) -- 핸드폰
+);
+
+
+create table pro_photo( -- 사진
+	member_idx number(3), -- 회원번호
+	photo_name varchar2(500) primary key, -- 사진 이름
+	CONSTRAINT member_idx_FK foreign key(member_idx) references pro_member(member_idx),
+);
+
+
+create sequence seq_pro_member_idx;
+
+INSERT INTO PRO_MEMBER VALUES(
+	seq_pro_member_idx.nextVal, --관리번호
+	'spring@a.com', --이메일
+	'1111', --비밀번호
+	'스프링', --이름
+	'test_nick', --별칭
+	'11111', --우편번호
+	'인천시 부평구', -- 주소
+	'부평동', --상세주소
+	'010-1111-1111' --핸드폰번호
+);
+
+ALTER SEQUENCE TEST_PM.SEQ_PRO_MEMBER_IDX INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999999999999 NOCYCLE NOCACHE NOORDER ;
+
+ALTER SEQUENCE TEST_PM.SEQ_PRO_MEMBER_IDX INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999999999999 NOCYCLE NOCACHE ORDER ;

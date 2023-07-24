@@ -1,0 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>mypage</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mypage.css">
+	</head>
+	<body>
+		<header>
+			<div class="logo" >
+			<img src="resources/img/logo.png" onclick="location.href='main'">
+			</div>
+		</header>
+		<a>정보수정</a>
+		마이페이지 입니다
+	</body>
+</html>

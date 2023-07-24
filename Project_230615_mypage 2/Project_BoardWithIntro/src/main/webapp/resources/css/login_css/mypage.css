@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+*{margin: 0; padding: 0; box-sizing: border-box; list-style:none}
+*,:after,:before{box-sizing:border-box}
+
+@import url("https://fonts.googleapis.com/css?family=Oswald");
+html,body {
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	font-family: "Oswald", sans-serif;
+	background: #efeeee;
+	color: #000;
+	font-size: 20px;
+}
+
+/* 헤더 영역 */
+.header{position: fixed; 
+		left: 0; 
+		top: 0; 
+		z-index: 1000000; 
+		width: 100%;
+}
+
+/* 로고 */
+.logo {width: 100%;
+	   cursor: pointer;
+	   text-align: center;
+	   padding: 30px;
+	   background: #fff;
+}
+
+
+/* 왼쪽 */
+/* 헤더를 제외한 왼쪽 전체 영역 */
+.left-frame {
+	position: fixed;
+	padding: 100px;
+	width: 35%;
+	height: 100%;
+	top: 147px;
+	left: 0;	
+}
+
+/* 왼쪽 메뉴 영역 */
+.left-menu {
+	position: absolute; /* 부모(조상) 요소를 기준으로 배치 */
+	padding: 10px;
+	width: 300px;
+	left: 30%;
+	background: #FFF;
+	text-align: center;
+	border-radius:15px;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+	
+}
+
+/* 오른쪽 */
+/* 헤더를 제외한 오른쪽 전체 영역 */
+.right-frame {
+	position: fixed;
+	padding: 100px;
+	width: 65%;
+	height: 100%;
+	top: 147px;
+	right: 0;
+	
+}
+
+/* 오른쪽 내용 영역 */
+.right-Content {
+	position: relative; /* 요소 자기 자신을 기준으로 배치 */
+	padding: 10px;
+	width: 750px;
+	right: 50px;
+	background: #FFF;
+	border-radius:15px;
+	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #efeeee;
+  
+}
+
+a.left_button {
+  display: block;
+  position: relative;  
+  padding: 0;
+  margin: 20px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.left_button {
+  background: #7b7b7b;
+  box-shadow: 0px 0px 0px 0px #000;
+  
+}
+
+.left_button:hover {
+  background: #7b7b7b;
+  box-shadow: 0px 0px 0px 5px #000;
+}
+

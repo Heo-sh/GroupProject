@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(173, 173, 183);
+	height: auto;
+}
+
+.menu_box {
+	width: auto;
+	height: 200px; /* 
+	margin: 3% 5% 0 5%; */
+	background-color: white;
+	border-radius: 6px;
+	padding: 0px;
+	margin: 0px;
+}
+
+.menu_box ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	text-align: center;
+}
+
+.menu_box ul li {
+	background-color: gray;
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	list-style: none;
+	position: relative;
+	transition: 0.5s;
+	display: block;
+	margin: 0 30px 0 30px;
+}
+
+.menu_box ul li:hover {
+	background-color: black;
+	box-shadow: 0px 20px 100px 0px rgba(0, 0, 0, 0.5);
+}
+
+.menu_box ul li ul li {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	margin: 0;
+	margin-bottom: 10px;
+	right: 25px;
+	top: 70px;
+}
+
+.menu_box ul li a {
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+}
+
+.menu_box ul li ul {
+	visibility: hidden;
+	display: none;
+	height: 400px;
+}
+
+.menu_box ul li:hover ul {
+	visibility: visible;
+	display: block;
+}
+
+.menu_box ul .logo_box {
+	width: 100px;
+	height: 100px;
+}
+
+.menu_box ul .login_btn {
+	border-radius: 0%;
+	width: 30px;
+	height: 30px;
+	align-self: flex-start;
+	margin: 0;
+	border-radius: 5px;
+}
+
+.menu_box ul .login_btn ul li {
+	right: 110px;
+	top: 0;
+	border-radius: 6px;
+	width: 100px;
+	height: 30px;
+	margin: 0;
+}
+
+/* 게시판 css */
+.board_mainbox {
+	background-color: white;
+	border-radius: 6px;
+	width: auto;
+	height: 800px;
+}
+.flex_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+h1 {
+	text-align: center;
+}
+.board {
+	width: 40%;
+	height: 700px;
+	border-radius: 6px;
+	border: 1px solid #E4E4E4;
+}
+
+.nickname_box {
+	display: flex;
+	align-items: center;
+}
+
+.nickname {
+	text-decoration: none;
+	font-size: 25px;
+	border-style: none;
+    margin-left: 5px;
+    width: 60%;
+}
+
+.delete_btn {
+    margin-left: auto;
+    margin-right: 5px;
+    border-radius: 6px;
+    border-color: #E4E4E4;
+    background-color: #fff;
+}
+
+.img_box {
+	width: auto;
+	height: 60%;
+	border-top: 1px solid #E4E4E4;
+	border-bottom: 1px solid #E4E4E4;
+}
+.img_box img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: fill;
+}
+.function_box {
+	display: flex;
+	border-bottom: 1px solid #E4E4E4;
+    align-items: center;
+}
+
+
+.function_box button{
+	width: 50px;
+	height: 50px;
+	margin: 5px;
+	border-style: none;
+	background: #fff;
+}
+
+#counting {
+    width: 50px;
+    height: 50px;
+    border-style: none;
+}
+.function_box a .comment_btn {
+	width: 45px;
+	height: 45px;
+	margin: 9px 5px;
+}
+
+.content_mainbox {
+	display: flex;
+	justify-content: space-between;
+}
+
+.nickname2 {
+	margin: 10px;
+	font-size: medium;
+	border-radius: 6px;
+	border-color: aliceblue;
+	width: 230px;
+	height: 40px;
+}
+
+.content {
+	margin: 10px 10px 0px 0px;
+	height: 165px;
+	width: 300px;
+	border-radius: 6px;
+	font-size: xx-large;
+	resize: none;
+}
+.content:focus {
+	outline: none;
+}
+
+.comment_mainbox {
+	width: 40%;
+	height: 700px;
+	border-radius: 6px;
+	border: 1px solid #E4E4E4;
+}
+.h2_box {
+    width: auto;
+    height: 50px;
+    border-bottom: 1px solid #E4E4E4;
+}
+h2 {
+    text-align: center;
+}
+
+.real_comment_box {
+    width: auto;
+    height: 85%;
+    background-color: rgb(201, 199, 199);
+}
+.comment_insert_box {
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+}
+.comment_insert_box * {
+	margin: 5px 5px 5px 5px;	
+}
+#admin {
+    width: 70px;
+    border-style: none;
+}
+.comment {
+    width: 300px;
+    border-style: none;
+}
+
+input[type="text"]:focus {
+	outline: none;
+}
+.comment_each {
+    margin-left: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+}
+.com_nick {
+    width: 50px;
+    border-style: none;
+    background-color: rgb(201, 199, 199);
+}
+.com_content {
+    width: 65%;
+    border-style: none;
+    background-color: rgb(201, 199, 199);
+}
+.com_func_box {
+    margin-left: auto;
+    margin-right: 5px;
+}

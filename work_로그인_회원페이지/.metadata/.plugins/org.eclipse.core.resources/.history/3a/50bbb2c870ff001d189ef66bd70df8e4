@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<div class= "accordion">
+			<input type ="checkbox" id="answer01">
+			<label for="answer01">컨텐츠 제목 부분<em></em></label>
+			<div><p>자주묻는 질문의 답변이 여기에 들어갑니다
+					이곳에서 자연스럽게 나오는 효과를 볼 수 있습니다</p>
+			</div>
+			<input type ="checkbox" id="answer02">
+			<label for="answer02">컨텐츠 제목 부분<em></em></label>
+			<div><p>자주묻는 질문의 답변이 여기에 들어갑니다
+					이곳에서 자연스럽게 나오는 효과를 볼 수 있습니다</p>
+			</div>
+			<input type ="checkbox" id="answer03">
+			<label for="answer03">컨텐츠 제목 부분<em></em></label>
+			<div><p>자주묻는 질문의 답변이 여기에 들어갑니다
+					이곳에서 자연스럽게 나오는 효과를 볼 수 있습니다</p>
+			</div>
+			<input type ="checkbox" id="answer04">
+			<label for="answer04">컨텐츠 제목 부분<em></em></label>
+			<div><p>자주묻는 질문의 답변이 여기에 들어갑니다
+					이곳에서 자연스럽게 나오는 효과를 볼 수 있습니다</p>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+--사진 저장 테이블
+create table pro_photo(
+	photo_num number(5) primary key, --1.사진 관리를 위한 시퀀스
+	photo_name varchar2(500), 	 --2.사진 이름
+	member_idx number(3),		 --3.작성자의 관리번호
+	regdate date,			 --4.사진을 저장한 날짜
+	brand_num(3),			 --5.사진의 브랜드
+	board_id nember(10),		 --6.seq_board_id.currval을 담을 컬럼
+	foreign key (member_idx) references pro_member(member_idx),
+	foreign key (brand_num) references brand_name(brand_num)
+);
+--사진 관리를 위한 시퀀스
+create sequence seq_photo_num;
+인생네컷 / 인천부평점
+
+split('/')
+slice
+
+where loc.brand = slice[0] and loc.location = slice[1]; 
+
+--브랜드 테이블
+create table brand_name(
+	brand_num number(3) primary key,	--브랜드 관리를 위한 번호
+	brand_name varchar2(100)		--브랜드 이름
+);
+
+insert into brand_name values(
+	10,
+	"인생네컷"
+);
+
+insert into brand_name values(
+	20,
+	"포토이즘"
+);
+
+insert into brand_name values(
+	30,
+	"포토그레이"
+);
+
+insert into brand_name values(
+	40,
+	"하루필름"
+);
+
+insert into brand_name values(
+	50,
+	"포토매틱"
+);

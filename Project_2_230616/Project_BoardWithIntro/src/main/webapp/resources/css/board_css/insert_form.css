@@ -1,0 +1,228 @@
+@charset "UTF-8";
+*{
+	margin: 0px;
+   	padding: 0px;
+   	font-family: 'Noto Sans','Noto Sans Korean','Apple SD Gothic Neo', 'Malgun Gothic','Nanum Gothic', 'Noto Sans','sans-serif';
+	}
+
+/* header css */
+header{
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	height: 160px;
+	}
+
+.logo{
+	display: inline-block;
+	position: relative;
+	top: 10px;
+	border: none; 
+	margin-right: 150px;
+}
+	
+
+.common{
+	width: 110px;
+	height: 100px;
+	background: #efeeee;
+	padding-top: 10px;
+	display: inline-block;
+	margin-right: 150px;
+	position: relative;
+	top: 20px;
+	border-radius: 35%; 
+	border: #fff; 
+	box-shadow: -10px -10px 20px rgba(250,251,255,0.7), 6px 6px 16px rgba(209,205,199,1.7); 
+	border: none; 
+	outline: none; 
+	cursor: pointer; 
+	overflow: hidden;
+}
+		
+.abm{
+	margin-right: 0px;}
+
+.common img{
+	display: block; 
+	margin: 10px auto; 
+	transition: all 0.5s;
+	}
+	
+.common .hov_txt{
+	display: none; 
+	font-size: 25px; 
+	transition: all 0.5s; 
+	width: 100%; 
+	height: 100%; 
+	background: rgba(134,134,134,0.5); 
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	transition: all 0.5s; 
+	justify-content: center; 
+	align-items: center; 
+	backdrop-filter: blur(2px);
+	}
+
+.common .hov_txt p{
+	color: #fff;
+	}
+	
+.common:hover .hov_txt{
+	display: flex;
+}
+
+
+
+
+/* 게시판 css */
+.board_mainbox {
+	width: auto;
+	height: auto;
+	background-color: #fff;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+}
+
+.board_mainbox h1 {
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 0px;
+	padding-top: 30px;
+}
+
+.insert_form {
+	background-color: #fff;
+	border-radius: 6px;
+	width: 50%;
+	height: auto;
+	display: inline-block;
+	display: flex;
+	flex-direction: column;
+	margin: 0 25%;
+	box-shadow: 5px 5px 5px rgb(91, 81, 81);
+}
+
+#nickname {
+	border-style: none;
+	margin: 10px;
+	font-size: large;
+}
+
+.img_box {
+	width: 90%;
+	height: 600px;
+	background-color: rgb(202, 199, 199);
+	margin: 0 25px;
+	border-radius: 6px;
+}
+
+.img_box img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	object-fit: fill;
+}
+
+.upload_box {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+/* input[type=file] css */
+/* label css 추가 */
+.upload_box label {
+	display: inline-block;
+	padding: .5em .75em;
+	margin: 5px 25px 5px 5px;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	transition: all 0.5s;
+}
+
+.upload_box label:hover {
+	background-color: rgb(133, 112, 112);
+	color: #704444;
+}
+/* input 버튼 숨기기 */
+.upload_box input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+/* 파일의 이름 나오게 하기 위함 */
+.upload_box .upload_name {
+	display: inline-block;
+	padding: .5em .75em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	appearance: none; /* 네이티브 외형 감추기 */
+}
+
+.brand_box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.brand_box button {
+	border-style: none;
+	border-radius: 6px;
+	width: 100px;
+	height: 50px;
+	margin: 0px 10px 10px 10px;
+	border-color: #ebebeb;
+	transition: all 0.5s;
+}
+
+.brand_box button:hover {
+	background-color: pink;
+	cursor: pointer;
+}
+
+#content {
+	border-radius: 6px;
+	width: 90%;
+	height: 200px;
+	margin: 0 25px 5px 25px;
+	font-size: 25px;
+	resize: none;
+	border-color: #999;
+}
+
+#content:focus {
+	outline: none;
+}
+
+.btn_box {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+#uploadbtn {
+	margin: 0px 5px 5px 5px;
+}
+
+.cancle_btn {
+	margin: 0px 25px 5px 0px;
+}

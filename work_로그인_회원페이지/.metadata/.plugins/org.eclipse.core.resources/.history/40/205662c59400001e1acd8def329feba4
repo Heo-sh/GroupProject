@@ -1,0 +1,87 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>login</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
+		<script src="resources/js/httpRequest.js"></script>
+		<script type="text/javascript">
+			function login(f) {
+				
+				var email = f.email.value.trim();
+				var pw = f.pw.value.trim();
+				
+				// 유효성 체크
+				if (email == "") {
+					alert("이메일을 입력해주세요");
+					return;
+				}
+				
+				if (pw == "") {
+					alert("비밀번호를 입력해주세요");
+					return;
+				}
+				
+				var url = "login.do";
+				var param = "email="+email+"&pw="+pw;
+				
+				sendRequest(url, param, myCheck, "POST");
+			}
+			
+			function myCheck() {
+				
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					
+					var data = xhr.responseText;
+					var json = (new Function('return'+data))();
+					
+					if(json[0].result == 'no_email') {
+						
+						alert("이메일이 존재하지 않습니다");
+						
+					} else if(json[0].result == 'no_pw') {
+						
+						alert("비밀번호가 일치하지 않습니다");
+						
+					} else {
+						
+						alert("로그인 성공");
+						location.href="main";
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<div class="logo" >
+			<img src="resources/img/logo.png" onclick="location.href='main'">
+			</div>
+		</header>
+		<form>
+			<table border="1" align="center">
+				<tr>
+					<th>이메일</th>
+					<td><input name="email" placeholder="이메일"></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input name="pw" type="password" placeholder="비밀번호"></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+					<input type="button" value="로그인" onclick="login(this.form)" style="cursor:pointer;">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+					<input type="button" value="회원가입" onclick="location.href='memberjoin'" style="cursor:pointer;">
+					</td>
+				</tr>
+			</table>
+		</form>	
+	</body>
+</html>

@@ -1,0 +1,15 @@
+package vo;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class ProNonMemberVO {
+	
+	private int non_member_idx;
+	private String non_member_phone;
+	private String non_member_name;
+	
+
+}

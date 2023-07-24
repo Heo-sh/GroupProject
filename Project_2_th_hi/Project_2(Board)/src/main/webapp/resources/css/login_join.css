@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+.logo {width: 250;
+	 cursor: pointer;
+	 text-align: center;
+	 padding: 30px;
+	 }
+
+body{
+  margin:0;
+  color:#D2D2D2;
+  font:600 16px/18px 'Open Sans',sans-serif;
+}
+*,:after,:before{box-sizing:border-box}
+
+::placeholder {
+	color: #A1A1A1;
+}
+
+.login-wrap{
+  width:100%;
+  margin:auto;
+  max-width:525px;
+  min-height:1000px;
+  position:relative;
+  background:no-repeat center;
+  box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+}
+.login-html{
+  width:100%;
+  height:100%;
+  position:absolute;
+  padding:90px 70px 50px 70px;
+  background:#efeeee;
+}
+.login-html .sign-in-htm,
+.login-html .sign-up-htm{
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  position:absolute;
+  transform:rotateY(180deg);
+  backface-visibility:hidden;
+  transition:all .4s linear;
+}
+.login-html .sign-in,
+.login-html .sign-up,
+.login-form .group .check{
+  display:none;
+}
+
+.login-html .tab{
+  font-size:22px;
+  margin-right:15px;
+  padding-bottom:5px;
+  margin:0 15px 10px 0;
+  display:inline-block;
+  border-bottom:2px solid transparent;
+}
+.login-html .sign-in:checked + .tab,
+.login-html .sign-up:checked + .tab{
+  color:#000;
+  border-color:#7b7b7b;
+}
+.login-form{
+  min-height:345px;
+  position:relative;
+  perspective:920px;
+  transform-style:preserve-3d;
+}
+
+.login-form .group{
+  margin-bottom:15px;
+}
+
+/* form 입력 창 */
+.login-form .group .input{	
+  	color:#000;  		
+}
+
+/* 버튼 */
+.login-form .group .button{
+	color:#fff; 
+}
+
+/* form 입력 창 */
+/* 버튼 */
+.login-form .group .input,
+.login-form .group .button{
+  width:100%;
+  display:#000;
+  border:none;
+  padding:15px 20px;
+  border-radius:25px;
+  background:rgba(0,0,0,.1);
+}
+
+/* password 입력 모양 */
+.login-form .group input[data-type="password"]{
+  text-security:circle;
+  -webkit-text-security:circle;
+}
+
+.login-form .group .label{
+  color:#7b7b7b;
+  font-size:12px;
+}
+
+.login-form .group .button{
+  background:#7b7b7b;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* CSS3의 transform 속성으로 요소를 회전하거나 확대/축소하거나 비트는 등 형태를 변형*/
+.login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
+  transform:rotate(0);
+}
+
+.login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
+  transform:rotate(0);
+}
+
+.login-form .input {
+	font-size: 15px;
+}
+
+.check_form {
+	padding-top: 3px;
+	text-indent: 1em;
+}
+
+.hr{
+  height:2px;
+  margin:40px 0 40px 0;
+  background:rgba(123,123,123,.2);
+}
+
+/* .foot-lnk{
+  text-align:center;
+} */

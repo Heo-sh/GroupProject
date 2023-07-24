@@ -1,0 +1,38 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>login</title>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/photo.css">
+	</head>
+	<body>
+		<header>
+			<div class="logo" >
+			<img src="resources/img/logo.png" onclick="location.href='main'">
+			</div>
+		</header>
+		<tr>
+			<th>아이디</th>
+			<td><input name="id"></td>
+		</tr>
+		<tr>
+			<th>비밀번호</th>
+			<td><input name="pw" type="password"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+			<input type="button" value="로그인" onclick="login(this.form)" style="cursor:pointer;">
+			<input type="button" value="취소" onclick="location.href='board_list.do'" style="cursor:pointer;">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+			<input type="button" value="회원가입" onclick="location.href='member_insert_form.do'" style="cursor:pointer;">
+			</td>
+		</tr>
+		
+		
+	</body>
+</html>

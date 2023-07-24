@@ -1,0 +1,54 @@
+--회원관리 테이블
+--회원관리를 위한 시퀀스
+create sequence seq_member_idx; 
+
+create table pro_member(
+	idx number(20) primary key, -- 관리번호
+	id varchar2(100), -- 아이디
+	pw varchar2(100), -- 비밀번호
+	nickname varchar2(100) unique not null, -- 별칭
+	name varchar2(100), -- 이름
+	email varchar2(300), -- 이메일
+	address varchar2(500), -- 주소
+	phone varchar2(100), -- 핸드폰
+	photo varchar2(300), -- 사진
+	photo_name varchar2(500) -- 사진 실제 이름
+);
+
+--게시판(후기) 테이블
+CREATE SEQUENCE SEQ_BOARD_IDX;
+create table Pro_board(
+	IDX NUMBER(3) PRIMARY KEY, --게시판 일련번호
+	NAME VARCHAR2(100) NOT NULL, --작성자
+	SUBJECT VARCHAR2(255) NOT NULL, --게시글 제목
+	CONTENT CLOB, --CONTENT: 내용 CLOB: VARCHAR2보다 큰 용량의 값을 넣어야 할 때
+	PWD VARCHAR2(100), --비밀번호
+	IP VARCHAR2(100), --IP
+	TITLE VARCHAR2(100), --사진이름
+	FILENAME VARCHAR2(100), --사진 실제이름
+	REGDATE DATE, --작성일자
+	READHIT NUMBER(3) DEFAULT 0, --조회수 DEFAULT 0: 생성 시 기본 값 = 0
+	REF NUMBER(3), --기준글 번호(댓글을 달기 위한 메인글)
+	STEP NUMBER(3), --댓글 순서(수직적)
+	DEPTH NUMBER(3), --댓글 깊이(대댓글)
+	DEL_INFO NUMBER(3), --삭제
+	LIKE_B NUMBER(5) --좋아요
+);
+
+-- 브랜드별 테이블
+CREATE SEQUENCE ;
+create table haru (
+	haru_idx number(20), -- 하루 관리 번호
+	frame varchar2(50), -- 프레임
+	frame_name varchar2(100), -- 프레임 실제 이름
+);
+
+-- 사진관 위치
+create table map (
+	brand VARCHAR2(100) not null, -- 브랜드 이름
+	region varchar2(100) not null, -- 지역이름
+	location varchar2(100) not null, -- 위치이름
+	address varchar2(150) not null, -- 주소
+              latitude varchar2(20) not null, -- 위도
+	longitude varchar2(20) not null -- 경도
+);

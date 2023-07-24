@@ -1,0 +1,154 @@
+@charset "UTF-8";
+*{
+	margin: 0px;
+   	padding: 0px;
+	box-sizing: border-box;
+	}
+
+header{
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	height: 160px;
+	}
+
+.logo{
+	display: inline-block;
+	position: relative;
+	top: 10px;
+	border: none; 
+	margin-right: 150px;
+	cursor: pointer;
+}
+	
+
+.common{
+	width: 110px;
+	height: 100px;
+	background: #efeeee;
+	padding-top: 10px;
+	display: inline-block;
+	margin-right: 150px;
+	position: relative;
+	top: 20px;
+	border-radius: 35%; 
+	border: #fff; 
+	box-shadow: -10px -10px 20px rgba(250,251,255,0.7), 6px 6px 16px rgba(209,205,199,1.7); 
+	border: none; 
+	outline: none; 
+	cursor: pointer; 
+	overflow: hidden;
+}
+		
+.abm{
+	margin-right: 0px;}
+
+.common img{
+	
+	display: block; 
+	margin: 10px auto; 
+	transition: all 0.5s;
+	}
+	
+.common .hov_txt{
+	display: none; 
+	font-size: 25px; 
+	transition: all 0.5s; 
+	width: 100%; 
+	height: 100%; 
+	background: rgba(134,134,134,0.5); 
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	transition: all 0.5s; 
+	justify-content: center; 
+	align-items: center; 
+	backdrop-filter: blur(2px);
+	}
+
+.common .hov_txt p{
+	color: #fff;
+	}
+	
+.common:hover .hov_txt{
+	display: flex;
+}
+
+/* 브렌드 버튼 */
+.btn{
+	 border: none;
+	 display: flex;
+	 justify-content: center;
+	 position: relative;
+	 top: 70px;
+	} 
+#b1{
+	border: none;
+	margin-right:50px;
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+	
+	}	
+#b2{
+	border: none;
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+	margin-right:50px;
+	}
+#b3{
+	border: none;
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+	margin-right:50px;
+	}
+#b4{
+	border: none;
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+	margin-right:50px;
+	}
+#b5{
+	border: none;
+	width: 250px;
+	height: 250px;
+	border-radius: 100%;
+	}
+
+/* 브렌드별 프레임 */
+
+.frame{
+	display: flex;
+	position: relative;
+	align-items: center;
+	}
+
+.image img{
+	display: block; 
+	margin: 0 auto;
+	}
+
+.image .img_txt{
+	display: none; 
+	font-size: 15px; 
+	transition: all 0.5s; 
+	width: 100%; 
+	height: 100%; 
+	background: rgba(0,0,0,0.3); 
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	transition: all 0.5s; 
+	justify-content: center; 
+	align-items: center; 
+	}
+
+.image .img_txt p{
+	color: #fff;
+	}
+
+.image:hover .img_txt{
+	display: flex;
+	}
+
